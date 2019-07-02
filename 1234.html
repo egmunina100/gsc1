@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="robots" content="noindex">
+<link href="img/icon_x.ico" rel="icon" type="image/x-icon"/>
+<link href="img/icon_x.ico" rel="shortcut icon" type="image/x-icon"/>
+<link rel="apple-touch-icon-precomposed" href="img/icon_x.png" media="screen and (-webkit-min-device-pixel-ratio: 2)" />
+<link rel="apple-touch-icon-precomposed" href="img/icon_x.png" media="screen and (-webkit-device-pixel-ratio: 1.5)" />
+<link rel="apple-touch-icon-precomposed" href="img/icon_x.png" />
+<title>KDC 팀별 GSC 입력</title>
+<link rel="stylesheet" href="css/index.css" />
+</head>
+ <body>
+	<div class="header">
+		<!-- <img src="logo.png" alt="" style="display:none;"/> -->
+		<ul class="gnb">
+			<li class="gnb_li gnb_li_active"><p>GSC프로필입력<br>[임수연팀]</p></li>
+			<li class="gnb_li" onclick="location.href='proc/LogoutProc.php'">로그아웃</li>
+			<!-- <li class="gnb_li" onclick="window.open('soulDivide.php')">분류화면</li> -->
+		</ul>
+	</div>
+	<table class='addTbl'>
+		<form id="gscForm1">
+		<input id="leaderNo" name="leaderNo" type="hidden" value="627">
+		<input id="leadership" name="leadership" type="hidden" value="임수연">
+		<tr>
+			<th>뉴멤버이름</th>
+			<td class="long" colspan="5"><input class="input0" id="name" name="name" type="text" placeholder="실명을 입력하세요"></td>
+		</tr>
+
+		<tr>
+			<th>나이</th>
+			<td class="long" colspan="5"><input class="input0" id="age" name="age" type="number" placeholder=""></td>
+		</tr>
+		</form>
+		<tr>
+			<th>성별</th>
+			<td colspan="2" class="gender" alt="M">
+				<input class="input2" name="gender" value="M" type="hidden">남자
+			</td>
+			<td colspan="2" class="gender" alt="F">
+				<input class="input3" name="gender" value="F" type="hidden">여자
+			</td>
+		</tr>
+		<form id='gscForm2'>
+		<tr>
+			<th>GSC<br>선택요일</th>
+			<td class="gscDay" alt="WE">
+				<input class="input2" name="" value="" type="hidden">수
+			</td>
+			<td class="gscDay" alt="TA">
+				<input class="input2" value="" type="hidden">목<br>(오전)
+			</td>
+			<td class="gscDay" alt="TP">
+				<input class="input2" name="" value="" type="hidden">목<br>(오후)
+			</td>
+			<td class="gscDay" alt="FR">
+				<input class="input2" name="" value="" type="hidden">금
+			</td>
+			<td class="gscDay" alt="SA">
+				<input class="input2" name="" value="" type="hidden">토
+			</td>
+		</tr>
+		<tr id="tr_foreign_M" style="display:none">
+			<th>GSC언어선택<br>(외국인)</th>
+			<td class="long" colspan="5">
+				<!-- 통역필요체크시 등장함(형제용) -->
+				<select class="input1" id="GSCCtgr_lang_M" name="GSCCtgr_lang_M" onchange="fnForeignSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="KO">(한국어)</option>
+										<option value="EN">(영어)</option>
+										<option value="CH">(중국어)</option>
+										<option value="JA">(일어)</option>
+										<option value="RU">(러시아어)</option>
+										<option value="ES">(스페인어)</option>
+										<option value="EC">(기타)</option>
+									</select>
+			</td>
+		</tr>
+		<tr id="tr_foreign_F" style="display:none">
+			<th>GSC언어선택<br>(외국인)</th>
+			<td class="long" colspan="5">
+				<!-- 통역필요체크시 등장함(자매용) -->
+				<select class="input1" id="GSCCtgr_lang_F" name="GSCCtgr_lang_F" onchange="fnForeignSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="KO">(한국어)</option>
+										<option value="EO">(영어(배경O))</option>
+										<option value="EX">(영어(배경X))</option>
+										<option value="CH">(중국어)</option>
+										<option value="JA">(일어)</option>
+										<option value="RU">(러시아어)</option>
+										<option value="ES">(스페인어)</option>
+										<option value="MG">(몽골어)</option>
+										<option value="EC">(기타)</option>
+									</select>
+			</td>
+		</tr>
+
+		<!-- 유아/초/중/고(형제용) -->
+		<tr id="tr_young_M" style="display:none" >
+			<th>성인/중고생</th>
+			<td class="long" colspan="5">
+				<select class="input1" name="GSCCtgr_sch_M" id="GSCCtgr_sch_M" onchange="fnYoungSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="00">(성인)</option>
+										<option value="11">(고등학생(배경O))</option>
+										<option value="12">(고등학생(배경X))</option>
+										<option value="13">(중학생)</option>
+										<option value="15">(초등생-7세부터)</option>
+										<option value="17">(유치부 4~6세)</option>
+									</select>
+			</td>
+		</tr>
+		<!-- 유아,초등,MH(자매용) -->
+		<tr id="tr_young_F" style="display:none" >
+			<th>성인/중고생</th>
+			<td class="long" colspan="5">
+				<select class="input1" name="GSCCtgr_sch_F" id="GSCCtgr_sch_F" onchange="fnYoungSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="00">(성인)</option>
+										<option value="05">(중학생(진로필요))</option>
+										<option value="06">(중학생(질풍노도))</option>
+										<option value="07">(고등학생(진로필요))</option>
+										<option value="08">(고등학생(질풍노도))</option>
+										<option value="15">(초등생-7세부터)</option>
+										<option value="17">(유치부 4~6세)</option>
+									</select>
+			</td>
+		</tr>
+		<!-- 유아,초등,MH(자매용) -->
+		<tr id="tr_young_F_WT" style="display:none" >
+			<th>성인/중고생</th>
+			<td class="long" colspan="5">
+				<select class="input1" name="GSCCtgr_sch_F_WT" id="GSCCtgr_sch_F_WT" onchange="fnYoungSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="09">(성인)</option>
+										<option value="10">(중학생)</option>
+										<option value="14">(고등학생)</option>
+										<option value="16">(초등생-7세부터)</option>
+										<option value="18">(유치부 4~6세)</option>
+									</select>
+			</td>
+		</tr>
+
+		<tr id="tr_GSCexperience" style="display:none">
+			<th>GSC경험</th>
+			<td class="long" colspan="5">
+				<select class="input1" name="GSCCtgr_exp" id="GSCCtgr_exp" onchange="fnGSCexperienceSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="01">(처음)</option>
+										<option value="02">2회-모임참여계획있음</option>
+										<option value="03">2회-모임참여계획없음</option>
+										<option value="04">3회이상-수레바퀴/모임참여계획있음</option>
+										<option value="05">3회이상-수레바퀴/모임참여계획없음</option>
+									</select>
+			</td>
+		</tr>
+
+		<!-- 성인분류 - 연령대(자매용) -->
+		<tr id="tr_spe_F" style="display:none">
+			<th>성인/기타</th>
+			<td class="long" colspan="5">
+				<select class="input1" name="GSCCtgr_spe" id="GSCCtgr_spe" onchange="fnSpecialSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="01">(성인)</option>
+										<option value="02">(사모님/전도사)</option>
+										<option value="03">(멘강20~30대)</option>
+										<option value="04">(장년부(65세이상))</option>
+									</select>
+			</td>
+		</tr>
+		<!-- 성인분류 - 연령대(자매용) -->
+		<tr id="tr_spe_F_WT" style="display:none">
+			<th>성인/기타</th>
+			<td class="long" colspan="5">
+				<select class="input1" name="GSCCtgr_spe_WT" id="GSCCtgr_spe_WT" onchange="fnSpecialSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="01">(성인)</option>
+										<option value="02">(사모님/전도사)</option>
+										<option value="05">(장년부(70세이상))</option>
+									</select>
+			</td>
+		</tr>
+
+		<!-- 신앙배경(형제용) -->
+		<tr id="tr_faith_M" style="display:none">
+			<th>신앙배경</th>
+			<!-- <td colspan="2" class="faithBg" alt="06">
+				<input class="input2" name="" value="" type="hidden">O-있음:교회배경많음
+			</td> -->
+			<td colspan="2" class="faithBg" alt="04">
+				<input class="input2" name="" value="" type="hidden">O-있음
+			</td>
+			<td colspan="2" class="faithBg" alt="05">
+				<input class="input3" name="" value="" type="hidden">X-없음
+			</td>
+		</tr>
+		<!-- 신앙배경(자매용) -->
+		<tr id="tr_faith_F" style="display:none">
+			<th>신앙배경</th>
+			<td class="faithBg" alt="01">
+				<input class="input2" name="" value="" type="hidden">O-좋은맘:초보
+			</td>
+			<td class="faithBg" alt="06">
+				<input class="input2" name="" value="" type="hidden">O-좋은맘:배경많음
+			</td>
+			<td class="faithBg" alt="02">
+				<input class="input3" name="" value="" type="hidden">O-비판적
+			</td>
+			<td class="faithBg" alt="03">
+				<input class="input3" name="" value="" type="hidden">X-무배경
+			</td>
+		</tr>
+
+		<tr id="tr_age_M" style="display:none">
+			<th>연령대</th>
+			<td class="long" colspan="5">
+				<select class="input1" id="GSCCtgr_gen_M" name="GSCCtgr_gen_M">
+					<option value="" selected>선택</option>
+										<option value="01">(20~29세)</option>
+										<option value="02">(30~49세)</option>
+										<option value="06">(50대이상)</option>
+									</select>
+			</td>
+		</tr>
+		<!-- 성인 클릭시 연령대확장(자매용) -->
+		<tr id="tr_age_F" style="display:none">
+			<th>연령대</th>
+			<td class="long" colspan="5">
+				<!-- 연령대 -->
+				<select class="input1" name="GSCCtgr_gen_F" id="GSCCtgr_gen_F" onchange="fnAgeSelected(this.value);">
+					<option value="" selected>선택</option>
+										<option value="01">(20~29세)</option>
+										<option value="02">(30~49세)</option>
+										<option value="03">(50~64세)</option>
+									</select>
+			</td>
+		</tr>
+		<!-- 성인 클릭시 연령대확장(자매용) -->
+		<tr id="tr_age_F_WT" style="display:none">
+			<th>연령대</th>
+			<td class="long" colspan="5">
+				<!-- 연령대 -->
+				<select class="input1" name="GSCCtgr_gen_F_WT" id="GSCCtgr_gen_F_WT" >
+					<option value="" selected>선택</option>
+										<option value="04">(20~29세)</option>
+										<option value="05">(30~39세)</option>
+										<option value="07">(40~70세)</option>
+									</select>
+			</td>
+		</tr>
+
+		<!-- 성인 클릭시 연령대확장(자매용) -->
+		<tr id="tr_job_F" style="display:none">
+			<th>취업</th>
+			<td class="long" colspan="5">
+				<!-- 취업 -->
+				<select class="input1" name="GSCCtgr_job" id="GSCCtgr_job" >
+					<option value="" selected>선택</option>
+										<option value="01">(대학생)</option>
+										<option value="02">(O-취업)</option>
+										<option value="03">(X-무취업)</option>
+									</select>
+			</td>
+		</tr>
+		<!-- 성인 클릭시 연령대확장(자매용) -->
+		<tr id="tr_ch_F" style="display:none">
+			<th>결혼/자녀</th>
+			<td class="long" colspan="5">
+				<!-- 자녀 -->
+				<select class="input1" name="GSCCtgr_ch" id="GSCCtgr_ch" >
+					<option value="" selected>선택</option>
+										<option value="01">(미혼)</option>
+										<option value="02">(기혼-자녀O)</option>
+										<option value="03">(기혼-자녀X)</option>
+									</select>
+			</td>
+		</tr>
+
+		<tr id="tr_ch_F_50" style="display:none">
+			<th>결혼/자녀</th>
+			<td class="long" colspan="5">
+				<!-- 자녀 -->
+				<select class="input1" name="GSCCtgr_ch_50" id="GSCCtgr_ch_50" >
+					<option value="" selected>선택</option>
+										<option value="01">(미혼)</option>
+										<option value="04">(기혼)</option>
+									</select>
+			</td>
+		</tr>
+
+		<tr id="tr_etc_M" style="display:none;">
+			<th>참고</th>
+			<td class="long vOption" colspan="5">
+				<span alt="취업">취업</span>
+				<span alt="결혼">결혼</span>
+				<span alt="자녀">자녀</span><br>
+				<span alt="신학생/목사">신학생/목사</span>
+				<span alt="멘강">멘강</span>
+				<div class="vOption_cancel">선택취소</div>
+			</td>
+		</tr>
+		</form>
+		<form id='gscForm3'>
+		<tr>
+			<th>현재소속<br>(직장/학교)</th>
+			<td class="long" colspan="5"><input class="input0" id="now_place" name="now_place" type="text" placeholder=""></td>
+		</tr>
+		<tr>
+			<th>뉴멤버<br>연락처</th>
+			<td class="long" colspan="5">
+				<select class="input3" id="phone1" name="phone1">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="018">018</option>
+					<option value="017">017</option>
+					<option value="019">019</option>
+					<option value="070">070</option>
+				</select>
+				<input class="input3" type="tel" id="phone2" name="phone2" maxlength="4">
+				<input class="input3" type="tel" id="phone3" name="phone3" maxlength="4">
+			</td>
+		</tr>
+		<tr>
+			<th>교제수준</th>
+			<td class="long" colspan="5">
+				<select name="bible_progress" id="bible_progress" class="input1">
+					<option value="" selected>선택</option>
+					<option value="인도" >인도</option>
+					<option value="브릿지" >브릿지</option>
+					<option value="EBS" >EBS</option>
+					<option value="EBS이후단계" >EBS이후단계</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>인도자</th>
+			<td class="long" colspan="5">
+				<select name="guide_no" id="guide_no" class="input1">
+					<option value="" selected>선택</option>
+									</select>
+			</td>
+		</tr>
+		<tr>
+			<th>인도자<br>연락처</th>
+			<td class="long" colspan="5">
+				<select class="input3" id="guide_phone1" name="guide_phone1">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="018">018</option>
+					<option value="017">017</option>
+					<option value="019">019</option>
+					<option value="070">070</option>
+				</select>
+				<input class="input3" type="tel" id="guide_phone2" name="guide_phone2" maxlength="4">
+				<input class="input3" type="tel" id="guide_phone3" name="guide_phone3" maxlength="4">
+			</td>
+		</tr>
+		<tr>
+			<th>인도자와의<br>관계</th>
+			<td class="long" colspan="5"><input class="input0" id="guide_relation" name="guide_relation" type="text" placeholder=""></td>
+		</tr>
+		<tr>
+			<th>특이사항</th>
+			<td class="long" colspan="5"><textarea class="textarea_basic"  rows="4" id="etc" name="etc" placeholder=""></textarea></td>
+		</tr>
+		<tr>
+			<th>가족배경</th>
+			<td class="long" colspan="5"><textarea class="textarea_basic"  rows="4" id="family_background" name="family_background" placeholder=""></textarea></td>
+		</tr>
+		<tr>
+			<th>참석여부</th>
+			<td class="long" colspan="5">
+				<select name="attendance" id="attendance" class="input1">
+					<option value="1" selected>예상</option>
+					<option value="2" >참석</option>
+				</select>
+			</td>
+		</tr>
+		</form>
+		<tr>
+			<td colspan="6" class="btn_submit">추가하기</td>
+		</tr>
+	</table>
+
+	<table class="listTbl">
+		<thead>
+			<tr>
+				<th width="10%"></th>
+				<th width="10%">번호</th>
+				<th>이름</th>
+				<th width="13%">형/자</th>
+				<th width="13%">요일</th>
+				<th>참석</th>
+				<th>편집</th>
+			</tr>
+		</thead>
+		<tbody id="ListTable">
+			<tr>
+				<th><img class="btn_icon" src="img/addBlit.png" onclick="this.src='img/minusBlit.png'" /></th>
+				<td>1</td>
+				<td>정인섭</td>
+				<td>형제</td>
+				<td>
+					<select name="" id="" class="input1">
+						<option>예상</option>
+						<option>왔음</option>
+						<option>왔다감</option>
+					</select>
+				</td>
+				<td>
+					<a href="#"><img class="btn_icon" src="img/modify.png" alt="" /></a>
+					<a href="#"><img class="btn_icon" src="img/delete.png" alt="" /></a>
+				</td>
+			</tr>
+			<tr style="display:none;">
+				<th></th>
+				<td class="soul_profile" colspan="5">
+					이름: 정인섭<br>
+					나이: 30<br>
+					성별: 형제<br>
+					GSC선택요일: 금<br>
+					GSC분류: 배경있음/통역필요없음/<br>
+					현재소속: 등등
+				</td>
+			</tr>
+			<tr>
+				<th><img class="btn_icon" src="img/addBlit.png" alt="" /></th>
+				<td>2</td>
+				<td>홍에스겔성민</td>
+				<td>형제</td>
+				<td>
+					<select name="" id="" class="input1">
+						<option>왔다감</option>
+						<option>예상</option>
+						<option>왔음</option>
+					</select>
+				</td>
+				<td>
+					<a href="#"><img class="btn_icon" src="img/modify.png" alt="" /></a>
+					<a href="#"><img class="btn_icon" src="img/delete.png" alt="" /></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/script.js?v=1901161152"></script>
+</div>
+</body>
+</html>
